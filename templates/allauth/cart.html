@@ -1,0 +1,82 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="full flex flex-col gap-[20px] p-10 mt-[20px] md:flex-row ">
+    <div class="w-[80%]  flex  p-5">
+        <div class="w-full h-fit rounded-md shadow-md p-5 flex justify-between items-center">
+            <div>
+                <img class="rounded-md w-[100px] h-[100px]" src="{% static 'anna-pelzer-IGfIGP5ONV0-unsplash.jpg'%}">
+                <div class="productname"></div>
+                
+                
+            </div>
+            <div class="sprice">
+                1234
+
+            </div>
+            
+            <div class="flex gap-[10px] justify-center items-center">
+                <button>
+
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="qty">1</div>
+                <button>
+
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+
+            </div>
+
+            <div class="price h-fit">
+                1234
+
+            </div>
+
+        </div>
+
+    </div>
+    <div >
+        <h1 class=" text-[20px]">Cart Total</h1>
+        <h1 class="tprice font-bold my-10 ">285</h1>
+        
+        
+
+        <button class="addtocart rounded-md py-3 px-7 bg-[blue] text-white">Purchase</button>
+
+    </div>
+
+</div>
+    <script>
+        let price = 0
+        let qty = document.querySelector(".qty")
+        let tprice =document.querySelector(".tprice")
+        let sprice =document.querySelector(".s-price")
+        let addtocart =document.querySelector(".addtocart")
+
+
+        qty.addEventListener("change",e=>{
+
+            if(e.target.value>0){
+                tprice.textContent =  e.target.value * sprice.textContent
+            }
+        })
+        addtocart.addEventListener("click",e=>{
+            if(tprice.textContent>0){
+
+            }
+        })
+
+        
+
+
+    </script>
+
+
+
+{% endblock %}

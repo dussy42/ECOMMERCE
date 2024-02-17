@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/8c12befb35.js" crossorigin="anonymous"></script>
+ 
+  </head>
+  <body class="w-full  min-h-[100vh] relative">
+    <nav class="text-white w-full bg-[rgb(5,5,94)] h-[50px] flex items-center justify-between px-5" >
+      <div class="font-bold">
+        CHOPS
+      </div>
+      <div class="flex  gap-[10px] justify-center item-center">
+        <a>Products</a>
+        <a>cart</a>
+        <div class="group/item relative   text-left">
+            <div class="">
+              <button type="button"   class="topmenu inline-flex items-center justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                <i class="fa-solid fa-bars"></i> menu
+              </button>
+            </div>
+          
+            <!--
+              Dropdown menu, show/hide based on menu state.
+          
+              Entering: "transition ease-out duration-100"
+                From: "transform opacity-0 scale-95"
+                To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                From: "transform opacity-100 scale-100" font
+                To: "transform opacity-0 scale-95"
+            -->
+            <div id="123" class="topdropdown hidden  absolute  z-10 mt-2  origin-top-right divide-y text-black divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                {% if user.is_authenticated %}
+                <div class="p-1" role="none">
+                <a href="{% url 'account_email' %}">Change E-mail</a>
+            </div>
+                <div class="p-1" role="none">
+                    <a href="{% url 'account_logout' %}">Sign Out</a>
+                </div>
+                      {% else %}
+                      <div class="p-1" role="none">
+                    <a href="{% url 'account_login' %}">Sign In</a>
+                </div>
+                    <div class="p-1" role="none">
+                    <a href="{% url 'account_signup' %}">Sign Up</a>
+                </div>
+                      {% endif %}
+              
+            </div>
+          </div>
+      </div>
+
+
+        <!-- <strong><i class="fa-solid fa-bars"></i></strong> -->
+    
+          <!-- {% if user.is_authenticated %}
+    <a href="{% url 'account_email' %}">Change E-mail</a>
+        <a href="{% url 'account_logout' %}">Sign Out</a>
+          {% else %}
+        <a href="{% url 'account_login' %}">Sign In</a>
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+          {% endif %} -->
+        
+    </nav>
+    <div class="w-full pb-[200px]">
+
+      {% block body %}
+  
+      {% if messages %}
+      <div>
+        <strong>Messages:</strong>
+        <ul>
+          {% for message in messages %}
+          <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+  
+  
+  
+      {% block content %}
+      {% endblock %}
+      {% endblock %}
+      {% block extra_body %}
+      {% endblock %}
+    </div>
+    <footer class="bg-[rgb(5,5,94)] text-white w-full h-[150px] absolute bottom-[0px] flex justify-center items-center">
+        all right reserved
+
+
+    </footer>
+
+
+    <script>
+    
+
+        let menutoogle = false
+        let menu__ = document.querySelector(".topmenu")
+        let dropdown__ = document.querySelector(".topdropdown")
+        console.log(dropdown__,menu__)
+        menu__.addEventListener("click",e=>{
+            console.log("hshsh")
+            menutoogle =!menutoogle
+            if(menutoogle){
+                dropdown__.style.display="block"
+    
+            }
+            else{
+                dropdown__.style.display="none"
+            }
+    
+        })
+        </script>
+  </body>
+</html>
