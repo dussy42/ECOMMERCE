@@ -11,3 +11,6 @@ def cart (req):
   return   render(req,"cart.html")
 def productlist (req):
   return   render(req,"productlist.html")
+
+
+

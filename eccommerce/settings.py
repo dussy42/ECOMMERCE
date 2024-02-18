@@ -155,3 +155,226 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+JSONFOOD = [
+    {
+    "name":"Barbecue",
+    "id":"1",
+    "price":"20",
+    "ratings":"2",
+    "image":"alex-munsell-auIbTAcSH6E-unsplash.jpg"
+
+},
+    {
+    "name":"Barbecue",
+    "id":"2",
+    "price":"20",
+    "ratings":"2",
+    "image":"alex-munsell-Yr4n8O_3UPc-unsplash.jpg"
+
+},
+    {
+    "name":"italian beans",
+    "id":"3",
+    "price":"25",
+    "ratings":"2",
+    "image":"anh-nguyen-kcA-c3f_3FE-unsplash.jpg"
+
+},
+    {
+    "name":"straw berry cake",
+    "id":"4",
+    "price":"30",
+    "ratings":"2",
+    "image":"anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash (1).jpg"
+
+},
+    {
+    "name":"waffles",
+    "id":"5",
+    "price":"10",
+    "ratings":"2",
+    "image":"asnim-ansari-SqYmTDQYMjo-unsplash.jpg"
+
+},
+    {
+    "name":"noodles",
+    "id":"6",
+    "price":"20",
+    "ratings":"2",
+    "image":"brooke-lark--F_5g8EEHYE-unsplash.jpg"
+
+},
+    {
+    "name":"tomato salad",
+    "id":"7",
+    "price":"20",
+    "ratings":"2",
+    "image":"brooke-lark-jUPOXXRNdcA-unsplash.jpg"
+
+},
+    {
+    "name":"burger",
+    "id":"9",
+    "price":"20",
+    "ratings":"5",
+    "image":"chad-montano--GFCYhoRe48-unsplash.jpg"
+
+},
+    {
+    "name":"shawarma",
+    "id":"10",
+    "price":"20",
+    "ratings":"4",
+    "image":"chad-montano-lP5MCM6nZ5A-unsplash.jpg"
+
+},
+    {
+    "name":"pizza",
+    "id":"11",
+    "price":"30",
+    "ratings":"4",
+    "image":"chad-montano-MqT0asuoIcU-unsplash.jpg"
+
+},
+    {
+    "name":"bread salad",
+    "id":"12",
+    "price":"10",
+    "ratings":"4",
+    "image":"davide-cantelli-jpkfc5_d-DI-unsplash.jpg"
+
+},
+    {
+    "name":"oat",
+    "id":"12",
+    "price":"5",
+    "ratings":"3",
+    "image":"do-mee-SH8_JmrsQcw-unsplash.jpg"
+
+},
+    {
+    "name":"pear salad",
+    "id":"13",
+    "price":"10",
+    "ratings":"5",
+    "image":"eiliv-aceron-ZuIDLSz3XLg-unsplash.jpg"
+
+},
+    {
+    "name":"pudding",
+    "id":"14",
+    "price":"10",
+    "ratings":"3",
+    "image":"ella-olsson-mmnKI8kMxpc-unsplash.jpg"
+
+},
+    {
+    "name":"vanilla icecream",
+    "id":"14",
+    "price":"15",
+    "ratings":"5",
+    "image":"emile-mbunzama-cLpdEA23Z44-unsplash.jpg"
+
+},
+    {
+    "name":"porridge",
+    "id":"14",
+    "price":"15",
+    "ratings":"5",
+    "image":"emy-XoByiBymX20-unsplash.jpg"
+
+},
+    {
+    "name":"milk cream",
+    "id":"14",
+    "price":"10",
+    "ratings":"5",
+    "image":"ian-dooley-TLD6iCOlyb0-unsplash.jpg"
+
+},
+    {
+    "name":"pear pud",
+    "id":"14",
+    "price":"10",
+    "ratings":"5",
+    "image":"heather-ford-Ug7kk0kThLk-unsplash.jpg"
+
+},
+    {
+    "name":"steak nd sauce",
+    "id":"14",
+    "price":"10",
+    "ratings":"5",
+    "image":"jennifer-burk-gwBcamFtPr4-unsplash.jpg"
+
+},
+    {
+    "name":"fish meal",
+    "id":"14",
+    "price":"12",
+    "ratings":"5",
+    "image":"jonas-allert-MZ0U0g6RQpQ-unsplash.jpg"
+
+},
+    {
+    "name":"abacha",
+    "id":"14",
+    "price":"10",
+    "ratings":"5",
+    "image":"jonathan-borba-Gkc_xM3VY34-unsplash.jpg"
+
+},
+    {
+    "name":"peanut bread",
+    "id":"14",
+    "price":"9",
+    "ratings":"5",
+    "image":"joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg"
+
+},
+    {
+    "name":"fish soup",
+    "id":"14",
+    "price":"9",
+    "ratings":"5",
+    "image":"khloe-arledge-ND3edEmzcdQ-unsplash.jpg"
+
+},
+    {
+    "name":"frut salad",
+    "id":"14",
+    "price":"10",
+    "ratings":"5",
+    "image":"luisa-brimble-vIm26fn_QKg-unsplash.jpg"
+
+},
+    {
+    "name":"chinese rice",
+    "id":"14",
+    "price":"20",
+    "ratings":"5",
+    "image":"michele-blackwell-rAyCBQTH7ws-unsplash.jpg"
+
+},
+    {
+    "name":"ora soup",
+    "id":"14",
+    "price":"20",
+    "ratings":"5",
+    "image":"monika-grabkowska-_y6A9bhILkM-unsplash.jpg"
+
+},
+    {
+    "name":"bean pudding",
+    "id":"14",
+    "price":"20",
+    "ratings":"5",
+    "image":"monika-grabkowska-P1aohbiT-EY-unsplash.jpg"
+
+},
+]
