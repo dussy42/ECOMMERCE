@@ -49,9 +49,10 @@
         let tprice =document.querySelector(".tprice")
         let sprice =document.querySelector(".s-price")
         let addtocart =document.querySelector(".addtocart")
+        let data = JSON.parse("{{ item|safe }}".replaceAll(`'`, `"`))
 
 
-        qty.addEventListener("change",e=>{
+        qty.addEventListener("change",async (e)=>{
 
             if(e.target.value<=0){
                e.target.value=1
@@ -60,21 +61,48 @@
                 tprice.textContent =  e.target.value * sprice.textContent
             }
         })
-        addtocart.addEventListener("click",e=>{
-            if(tprice.textContent>0){
+        addtocart.addEventListener("click",async (e)=>{
+            console.log("smmssm",+tprice.textContent>0)
+            if(+tprice.textContent>0){
 
+
+                let cart = localStorage.getItem("cartv");
+                console.log(cart,"1")
+                if(cart){
+                    cart=JSON.parse(cart)
+                    console.log(cart,"2")
+                }
+                else{
+                    console.log(cart,"3")
+                    cart=[]
+                }
+                
+                let index= cart.findIndex(ee=>ee.id==data.id)
+                
+                if(index>=0){
+                    cart[index].quantity=qty.value
+                }else{
                     
+                    cart =[...cart,{...data,quantity:qty.value}]
+                }
+                console.log(cart,"5")
+
+
+
+
 
 
 
                 if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
 
 
-                    fetch("/addtocart",{
+              letv =    await  fetch("/addtocart",{
                         method:"post",
-                        body:{...JSON.parse("{{item|safe}}".replaceAll(`'`,`"`)),quantity:qty.value}
+                        body:JSON.stringify(cart)
                     })
                 }
+
+                localStorage.setItem("cartv",JSON.stringify(cart));
 
 
 

@@ -17,7 +17,7 @@
     {%  for val in data   %}
     
 
-    <a class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md" href="/product/:{{ val.id }}">
+    <a class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md" href="/product/{{ val.id }}">
         <div class="w-full h-[200px] bg-[url('{{ STATIC_URL }}foodimg/{{ val.image }}')] bg-cover bg-center bg-no-repeat">
 
 
@@ -80,7 +80,7 @@
         filterdata.forEach(val=>{
             a+=`
             
-            <a href="/product/:${val["id"]}" class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md">
+            <a href="/product/${val["id"]}" class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md">
         <div class="w-full h-[200px] bg-[url('static/foodimg/${ val["image"] }')] bg-cover bg-center bg-no-repeat">
 
 

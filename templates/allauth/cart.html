@@ -6,7 +6,7 @@
 
 {% block content %}
 {% load static %}
-<div class="full flex flex-col gap-[20px] p-10 mt-[20px] md:flex-row ">
+<div class="full flex flex-col gap-[20px] p-10 mt-[20px] md:flex-row productcon">
     <div class="w-[80%]  flex  p-5">
         <div class="w-full h-fit rounded-md shadow-md p-5 flex justify-between items-center">
             <div>
@@ -21,12 +21,12 @@
             </div>
             
             <div class="flex gap-[10px] justify-center items-center">
-                <button>
+                <button class="plusbtn">
 
                     <i class="fa-solid fa-plus"></i>
                 </button>
                 <div class="qty">1</div>
-                <button>
+                <button class="minusbtn">
 
                     <i class="fa-solid fa-minus"></i>
                 </button>
@@ -52,30 +52,236 @@
     </div>
 
 </div>
-    <script>
-        let price = 0
-        let qty = document.querySelector(".qty")
-        let tprice =document.querySelector(".tprice")
-        let sprice =document.querySelector(".s-price")
-        let addtocart =document.querySelector(".addtocart")
+<script>
+    // let price = 0
+  
+    let productcon =document.querySelector(".productcon")
+    let tprice =document.querySelector(".tprice")
+    let sprice =document.querySelector(".s-price")
+    // let addtocart =document.querySelector(".addtocart")
+    let data = JSON.parse(" {{ item|safe }} ".replaceAll(`'`, `"`))
 
 
-        qty.addEventListener("change",e=>{
 
-            if(e.target.value>0){
-                tprice.textContent =  e.target.value * sprice.textContent
-            }
-        })
-        addtocart.addEventListener("click",e=>{
-            if(tprice.textContent>0){
+    let a =""
+    if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
 
-            }
-        })
+data.forEach(ee=>{
+
+    a+=`<div data-obj=${JSON.stringify(ee)} class="w-full h-fit rounded-md shadow-md p-5 flex justify-between items-center">
+            <div>
+                <img class="rounded-md w-[100px] h-[100px]" src="/static/foodimg/${ee.image}">
+                <div class="productname"></div>
+                
+                
+            </div>
+            <div class="sprice">
+                ${ee.price}
+
+            </div>
+            
+            <div class="flex gap-[10px] justify-center items-center">
+                <button>
+
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="qty">${ee.quantity}</div>
+                <button>
+
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+
+            </div>
+
+            <div class="price h-fit">
+               ${ee.price * ee.quantity}
+
+            </div>
+
+        </div>`
+
+})
+    }
+    else{
+
+        let v = localStorage.getItem("cartv");
+        console.log(v)
+        if(v){
+
+            JSON.parse(v).forEach(ee=>{
+                a+=`<div data-obj=${JSON.stringify(ee)} class="w-full h-fit rounded-md shadow-md p-5 flex justify-between items-center">
+                <div>
+                    <img class="rounded-md w-[100px] h-[100px]" src="/static/foodimg/${ee.image}">
+                    <div class="productname"></div>
+                    
+                    
+                </div>
+                <div class="sprice">
+                    ${ee.price}
+    
+                </div>
+                
+                <div class="flex gap-[10px] justify-center items-center">
+                    <button class="plusbtn">
+    
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="qty">${ee.quantity}</div>
+                    <button class="minusbtn">
+    
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+    
+                </div>
+    
+                <div class="price h-fit">
+                    ${ee.price * ee.quantity}
+    
+                </div>
+    
+            </div>`
+            })
+        }
+
+
+    }
+
+
+
+
+let timeout = null
+// let productcon = document.querySelector(".productcon")
+productcon.innerHTML=a
+
+
+let plusbtn = document.querySelectorAll(".plusbtn")
+    let minusbtn = document.querySelectorAll(".minusbtn")
+    // let qty = document.querySelectorAll(".qty")
+    
+    
+    plusbtn.forEach(e=>{
+        
+        
+        
+        e.addEventListener("click",e=>{
+            clearTimeout(timeout)
+            let parent = e.currentTarget.parentElement.parentElement
+            // let price = document.querySelector(".price")
+        let qty = parent.querySelector(".qty")
+        let price = parent.querySelector(".price")
+        let data =JSON.parse(parent.dataset.obj)
+        let totalprice =+qty.textContent
+
+
+       
+        qty.textContent = totalprice+1
+        price.textContent = (totalprice+1) * data.price
+        let cart = localStorage.getItem("cartv");
+        if(cart){
+            cart = JSON.parse(cart)
+            let index  = cart.findIndex(eee=>eee.id==data.id)
+            cart[index].quantity = totalprice+1
+            localStorage.setItem("cartv",JSON.stringify(cart))
+
+
+        }
+        timeout = setTimeout(()=>{
+            // addtocart
+        },2000)
 
         
+   
+    
+
+    
+   
+       
 
 
-    </script>
+
+
+
+
+
+          
+
+
+
+
+        
+    })
+    })
+
+    
+    minusbtn.forEach(e=>{
+
+   
+    
+    e.addEventListener("click",e=>{
+        clearTimeout(timeout)
+        let parent = e.currentTarget.parentElement.parentElement
+        let qty = parent.querySelector(".qty")
+        let price = parent.querySelector(".price")
+        let data =JSON.parse(parent.dataset.obj)
+        let totalprice =+qty.textContent
+
+
+       
+        qty.textContent = totalprice-1||1
+        price.textContent = (totalprice-1||1) * data.price
+        let cart = localStorage.getItem("cartv");
+        if(cart){
+            cart = JSON.parse(cart)
+            let index  = cart.findIndex(eee=>eee.id==data.id)
+            cart[index].quantity = totalprice-1 || 1
+            localStorage.setItem("cartv",JSON.stringify(cart))
+
+
+        }
+        timeout = setTimeout(()=>{
+            // addtocart
+        },2000)
+
+        
+   
+    
+
+    
+   
+       
+
+
+
+
+
+
+
+          
+
+
+
+
+        
+    })
+    })
+
+    
+let addtocart = ()=>{
+    if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
+        let cart = localStorage.getItem("cartv");
+        if(cart){
+
+            fetch("/addtocart",{
+                method:"post",
+                body:cart
+            })
+        }
+
+
+}
+}
+
+</script>
 
 
 

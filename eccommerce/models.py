@@ -18,7 +18,11 @@ class  PRODUCT(models.Model):
 
 class CART(models.Model):
     user_id:models.CharField()
-    product:models.ManyToManyField(PRODUCT)
+    name:models.CharField()
+    image:models.CharField()
+    price:models.CharField()
+    id_:models.CharField()
+    # product:models.ManyToManyField(PRODUCT)
     
 
 
