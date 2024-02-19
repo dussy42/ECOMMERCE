@@ -6,26 +6,36 @@
 
 {% block content %}
 {% load static %}
+{% get_static_prefix as STATIC_URL %}
 <div class="full flex flex-col gap-[20px] p-10 mt-[20px] md:flex-row items-center">
     <div class="w-[50%] overflow-clip flex justify-center items-center">
-        <img class="rounded-md" src="{% static 'anna-pelzer-IGfIGP5ONV0-unsplash.jpg'%}">
+        <img class="rounded-md" src="{{ STATIC_URL }}foodimg/{{ item.image }}">
 
     </div>
     <div >
-        <h1 class="font-bold text-[30px]">Food1</h1>
-        <img class="w-[100px] py-10"  src="{%static '16231558095-star-rating.svg'%}" alt="ratings">
-        <h1 class=" text-[30px] font-bold color-red my-5">$<span class="s-price">285</span></h1>
+        <h1 class="font-bold text-[30px]">{{item.name}}</h1>
+        <div class="flex gap-2 items-center">
+
+            {% with ''|center:item.ratings as range %}
+            {% for vall in range %}
+             <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/>
+             <!-- <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/> -->
+    
+            {% endfor %}
+            {% endwith %}
+        </div>
+        <h1 class=" text-[30px] font-bold color-red my-5">$<span class="s-price">{{item.price}}</span></h1>
 
         <div>
             <p>Quantity: </p>
-            <input class="qty border-[1px] border-[black]" type="number" placeholder="0"/>
+            <input class="qty border-[1px] border-[black]"  type="number" placeholder="0"/>
         </div>
 
         <h2 class="mt-10 mb-5">Available: <b>stock</b></h2>
 
         <div>
             <p class="font-bold">Total price</p>
-            <h1 class="tprice font-bold text-[25px]">285</h1>
+            <h1 class="tprice font-bold text-[25px]">{{item.price}}</h1>
         </div>
 
         <button class="addtocart rounded-md py-3 px-7 bg-[blue] text-white">Add to cart</button>
@@ -43,12 +53,31 @@
 
         qty.addEventListener("change",e=>{
 
+            if(e.target.value<=0){
+               e.target.value=1
+            }
             if(e.target.value>0){
                 tprice.textContent =  e.target.value * sprice.textContent
             }
         })
         addtocart.addEventListener("click",e=>{
             if(tprice.textContent>0){
+
+                    
+
+
+
+                if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
+
+
+                    fetch("/addtocart",{
+                        method:"post",
+                        body:{...JSON.parse("{{item|safe}}".replaceAll(`'`,`"`)),quantity:qty.value}
+                    })
+                }
+
+
+
 
             }
         })
@@ -57,6 +86,11 @@
 
 
     </script>
+    <!-- 
+
+
+        id quantity , 
+     -->
 
 
 

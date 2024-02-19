@@ -3,12 +3,12 @@ from django.db import models
 
 
 
-class  PRODUCT(models):
+class  PRODUCT(models.Model):
 
-    product_image_name:models.CharField()
-    product_name:models.CharField()
-    product_price:models.CharField()
-    product_description:models.CharField()
+    name:models.CharField()
+    image:models.CharField()
+    price:models.CharField()
+    id_:models.CharField()
     
 
     
@@ -16,7 +16,7 @@ class  PRODUCT(models):
 
 
 
-class CART(models):
+class CART(models.Model):
     user_id:models.CharField()
     product:models.ManyToManyField(PRODUCT)
     

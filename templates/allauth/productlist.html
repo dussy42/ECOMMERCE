@@ -6,15 +6,19 @@
 
 {% block content %}
 {% load static %}
+{% get_static_prefix as STATIC_URL %}
 <div class="full flex flex-col gap-[20px] p-10 mt-[20px]  items-center">
     <h1 class="font-bold">Product List</h1>
    <div class="w-full max-w-[1000px]">
-        <input class="search w-full px-5 py-3   rounded-md shadow-md" placeholder="search"/>
+        <input type="text" class="search w-full px-5 py-3    rounded-md shadow-md" placeholder="search"/>
    </div>
-   <div class="w-full flex flex-wrap gap-[10px]  ">
+   <div class="w-full flex flex-wrap gap-[10px]  productcon  ">
 
-    <a class="w-full max-w-[400px] hover:opacity-50 h-[400px] overflow-clip p-5 rounded-md shadow-md">
-        <div class="w-full h-[200px] bg-[url('{% static 'anna-pelzer-IGfIGP5ONV0-unsplash.jpg'%}')] bg-cover bg-center bg-no-repeat">
+    {%  for val in data   %}
+    
+
+    <a class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md" href="/product/:{{ val.id }}">
+        <div class="w-full h-[200px] bg-[url('{{ STATIC_URL }}foodimg/{{ val.image }}')] bg-cover bg-center bg-no-repeat">
 
 
 
@@ -22,39 +26,119 @@
         <div class="w-full">
             <div class="my-5 flex w-full justify-between items-center">
 
-                <h1 class="name font-bold">rice</h1>
-                <h2 class="price">23</h2>
+                <h1 class="name font-bold">{{ val.name }}</h1>
+                <h2 class="price">{{ val.price }}</h2>
             </div>
-            <p class="des">
-               odio obcaecati itaque? A cumque, alias accusantium rerum est enim explicabo quisquam, eveniet aperiam maxime, earum dolor magnam nihil?
+            <p class="flex gap-2">
+                {% with ''|center:val.ratings as range %}
+                {% for vall in range %}
+                 <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/>
+                 <!-- <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/> -->
 
-
+                {% endfor %}
+                {% endwith %}
             </p>
+          
         </div>
 
     </a>
+
+    {%endfor%}
 
    </div>
 
 </div>
     <script>
-        let price = 0
-        let qty = document.querySelector(".qty")
-        let tprice =document.querySelector(".tprice")
-        let sprice =document.querySelector(".s-price")
-        let addtocart =document.querySelector(".addtocart")
+
+        let timeout = null
+        let data = JSON.parse("{{ data|safe }}".replaceAll(`'`, `"`))
+        console.log(data,data[0])
 
 
-        qty.addEventListener("change",e=>{
+        
+        let search = document.querySelector(".search")
+        console.log(search)
 
-            if(e.target.value>0){
-                tprice.textContent =  e.target.value * sprice.textContent
-            }
+
+
+        search.addEventListener("input",e=>{
+            let target = e.currentTarget
+            console.log("gkgkkgk")
+            clearTimeout(timeout)
+
+
+           timeout = setTimeout(()=>{
+
+
+          
+           let filterdata =  data.filter(ee=> ee["name"].toLowerCase() .includes(target.value.toLowerCase().trim()))
+           let productcon = document.querySelector(".productcon")
+
+           let a = ""
+
+
+        filterdata.forEach(val=>{
+            a+=`
+            
+            <a href="/product/:${val["id"]}" class="w-full max-w-[350px] hover:opacity-50  overflow-clip p-5 rounded-md shadow-md">
+        <div class="w-full h-[200px] bg-[url('static/foodimg/${ val["image"] }')] bg-cover bg-center bg-no-repeat">
+
+
+
+        </div>
+        <div class="w-full">
+            <div class="my-5 flex w-full justify-between items-center">
+
+                <h1 class="name font-bold">${ val["name"] }</h1>
+                <h2 class="price">${ val["price"] }</h2>
+            </div>
+            <p class="flex gap-2">
+               
+                ${ 
+                    (()=>{
+
+                        let aa =""
+                        for (i=0;i<=val["ratings"];i++){
+                            console.log("mdmdmdm")
+
+                          aa+=`  <img  class="w-[20px]" src="static/rate/star-svgrepo-com (1).svg"/>`
+                        }
+
+                        return aa
+                    })()
+
+
+
+                 }
+
+
+             
+            </p>
+          
+        </div>
+
+    </a>
+            
+            
+            `
         })
-        addtocart.addEventListener("click",e=>{
-            if(tprice.textContent>0){
 
-            }
+
+        console.log(a,filterdata)
+        productcon.innerHTML=a
+        
+
+
+
+          
+    
+    
+    },1000)
+
+
+
+
+
         })
 
         

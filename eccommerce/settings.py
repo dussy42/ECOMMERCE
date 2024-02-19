@@ -162,8 +162,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JSONFOOD = [
     {
-    "name":"Barbecue",
     "id":"1",
+    "name":"Barbecue",
     "price":"20",
     "ratings":"2",
     "image":"alex-munsell-auIbTAcSH6E-unsplash.jpg"
