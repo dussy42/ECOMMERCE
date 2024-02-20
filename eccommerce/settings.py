@@ -32,7 +32,7 @@ AUTHENTICATION_BACKENDS =(
 )
 SECRET_KEY = 'django-insecure-!m4k7cpy&e=g@q0s$66vlgi2v$uurki9!!68hh#oxn9ev!^1$t'
 SITE_ID = 1 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"h
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -147,6 +147,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+SITE_ID = 1 
 
 print("weWEEWE",BASE_DIR)
 # Static files (CSS, JavaScript, Images)
