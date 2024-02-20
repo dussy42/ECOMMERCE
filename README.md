@@ -1,5 +1,5 @@
 # CHOPS
-This project [chops](https://reservebooking-f88a92f8cf30.herokuapp.com/) is a minimalistic eccormmerce site for the sales of different kinds of meals
+This project [chops](https://chops-fee5c95170e3.herokuapp.com/) is a minimalistic eccormmerce site for the sales of different kinds of meals
 <!-- ![home](/assets/images/finterface.png) -->
 # User Experience (UX)
 Key information for the app
