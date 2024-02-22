@@ -5,10 +5,10 @@ from django.db import models
 
 class  PRODUCT(models.Model):
 
-    name:models.CharField()
-    image:models.CharField()
-    price:models.CharField()
-    id_:models.CharField()
+    name=models.CharField(max_length=200)
+    image=models.CharField(max_length=200)
+    price=models.CharField(max_length=200)
+    productid=models.CharField(max_length=200)
     
 
     
@@ -17,12 +17,15 @@ class  PRODUCT(models.Model):
 
 
 class CART(models.Model):
-    user_id:models.CharField()
-    name:models.CharField()
-    image:models.CharField()
-    price:models.CharField()
-    id_:models.CharField()
-    # product:models.ManyToManyField(PRODUCT)
+    user_id=models.CharField(max_length=200)
+    name=models.CharField(max_length=200)
+    image=models.CharField(max_length=200)
+    price=models.CharField(max_length=200)
+    productid=models.CharField(max_length=200)
+
+    def __str__(self):
+        return "usercart"
+    # product=models.ManyToManyField(PRODUCT)
     
 
 

@@ -69,6 +69,23 @@ screen w-350
 
 
 
+# Test<br>
+
+ Tests that a GET request works and renders the correct template   
+
+ ![input](assets/Screenshot2024-02-22122014.png) <br>
+
+ ![input](assets/Screenshot2024-02-22120524.png) <br>
+
+ Test Model
+ The cart model
+
+ ![input](assets/Screenshot2024-02-22122102.png) <br>
+
+ ![input](assets/Screenshot2024-02-22120524.png) <br>
+
+
+
 # Deployment<br>
 ``` make a new file name Procfile and do not put any extension in it. It is a file required by Heroku
 

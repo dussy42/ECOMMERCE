@@ -23,8 +23,8 @@ def product (req,id):
   # return   render(req,"product.html")
 def cart (req):
   item = []
-  if(req.user.isloggedin):
-    v = CART.objects.get(userId = req.user.username)
+  if(req.user.is_authenticated):
+    v = CART.objects.get(user_id = req.user.username)
     if(v):
       item_ = cartser(v,many=True)
       item = [{**_["product"] , **_} for _ in item_]
