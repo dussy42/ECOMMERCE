@@ -69,6 +69,12 @@ screen w-350
 
 
 
+# ADMIN CREDENTIALS<br>
+username dussy@gmail.com
+password Admin@123
+
+
+
 # Test<br>
 
  Tests that a GET request works and renders the correct template   
