@@ -70,8 +70,8 @@ screen w-350
 
 
 # ADMIN CREDENTIALS<br>
-username dussy@gmail.com
-password Admin@123
+username dussy@gmail.com<br>
+password Admin@123<br>
 
 
 
