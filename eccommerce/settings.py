@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
-import os
-import dj_database_url
+from pathlib import Path;
+import os;
+import dj_database_url;
 
 from dotenv import load_dotenv
 
@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 AUTHENTICATION_BACKENDS =(
-    "django.contrib.auth.backends.ModelBackend"
+    "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend"
 )
 SECRET_KEY = 'django-insecure-!m4k7cpy&e=g@q0s$66vlgi2v$uurki9!!68hh#oxn9ev!^1$t'
@@ -39,7 +39,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_MIN_LENGTH =4
 # ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE=True
 LOGIN_URL=""
-LOGIN_REDIRECT_URL="/"
+LOGIN_REDIRECT_URL="home"
+LOGOUT_REDIRECT_URL="home"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -112,8 +113,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
