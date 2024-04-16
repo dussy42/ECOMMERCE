@@ -20,7 +20,7 @@ def product (req,id):
   print(id,item_)
   # return   render(req,"productlist.html",{"data":settings.JSONFOOD})
   return   render(req,"product.html",{"item":item_})
-  # return   render(req,"product.html")
+
 def cart (req):
   item = []
   if(req.user.is_authenticated):
