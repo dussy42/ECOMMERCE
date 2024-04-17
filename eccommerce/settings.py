@@ -60,6 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      "eccommerce.apps.BaseConfig",
+     "base.apps.BaseConfig",
+     "checkout.apps.BaseConfig",
+     "products.apps.BaseConfig",
       
     'allauth',
     'allauth.account',

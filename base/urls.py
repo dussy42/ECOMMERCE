@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("account/",include("allauth.urls")),
     path("",views.index,name="home"),
-    path("product/<id>",views.product,name="product"),
-    path("cart",views.cart,name="cart"),
-    path("list",views.productlist,name="productlist"),
+    path("products",include("products.urls")),
+    path("cart",include("checkout.url")),
+   
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
