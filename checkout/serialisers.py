@@ -1,6 +1,6 @@
-from .models import CART
+from .models import CHECKOUT
 from rest_framework.serializers import  ModelSerializer
 class cartser (ModelSerializer):
      class Meta:
-        model = CART
+        model = CHECKOUT
         fields = '__all__'

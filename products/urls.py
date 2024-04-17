@@ -24,4 +24,4 @@ urlpatterns = [
     path("/<id>",views.product,name="product"),
 
     path("",views.productlist,name="productlist"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
