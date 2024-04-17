@@ -5,13 +5,33 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+<style>
+  form p{
+
+ width: 100%;
+ max-width: 500px;
+
+  
+
+  }
+
+  form input{
+ height: 40px;
+ width: 100%;
+ padding: 5px;
+
+
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  }
+</style>
 <div class="w-full flex flex-col justify-center items-center">
 
   <h1 class="font-bold my-5">{% trans "Sign Up" %}</h1>
   
   <p class="my-5">{% blocktrans %}Already have an account? Then please <a class="text-[blue]" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
   
-  <form class="signup w-full flex flex-col justify-center items-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  <form class="signup w-full p-5 box-shadow-md flex flex-col justify-center items-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
     {% csrf_token %}
     {{ form.as_p }}
     {% if redirect_field_value %}
