@@ -40,7 +40,20 @@ products
 
 
 
+# Project workflow:<br>
 
+Auth <br>
+
+The Project implement  django alluth for authentication<br>
+AllAuth Takes care of all neccsary authentication template, authenication funtionalities
+
+
+Product <br>
+The project conatined already test data as a dictionary located in the settings.py file
+
+<br>
+
+The project use The browser localstorage to keep track of the cart and checkout system
 
 
 
