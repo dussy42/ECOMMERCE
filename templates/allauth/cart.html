@@ -273,7 +273,10 @@ let addtocart = ()=>{
 
             fetch("/addtocart",{
                 method:"post",
-                body:cart
+                body:cart,
+                headers:{
+                    "Content-Type": "application/json",
+                }
             })
         }
 

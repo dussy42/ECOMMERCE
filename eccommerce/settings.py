@@ -24,7 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+            'rest_framework.parsers.JSONParser',
+            'rest_framework.parsers.FormParser',
+            'rest_framework.parsers.MultiPartParser',
 
+     )
+ }
 
 AUTHENTICATION_BACKENDS =(
     "django.contrib.auth.backends.ModelBackend",
@@ -74,7 +81,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -116,8 +123,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -159,6 +166,8 @@ print("weWEEWE",BASE_DIR)
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

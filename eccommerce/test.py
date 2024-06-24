@@ -1,3 +1,4 @@
+from django.forms import ValidationError
 from .models import CART
 from django.test import TestCase ,Client
 from django.urls import reverse
@@ -47,7 +48,11 @@ class TestCartModel(TestCase):
 
         self.assertEqual(str(self.cart), 'usercart')
 
-   
+
+    def test_invalid_data(self):
+        obj = CART(name="")  # Name is required
+        with self.assertRaises(ValidationError):
+            obj.full_clean()  #
 
     def test_id_are_unique(self):
         """ Tests two carts with identical titles from the same author receive different slugs """

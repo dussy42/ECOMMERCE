@@ -75,6 +75,7 @@
                 else{
                     console.log(cart,"3")
                     cart=[]
+                    console.log(cart,"1")
                 }
                 
                 let index= cart.findIndex(ee=>ee.id==data.id)
@@ -96,8 +97,11 @@
                 if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
 
 
-              letv =    await  fetch("/addtocart",{
+              letv =    await  fetch("/cart/addtocart",{
                         method:"post",
+                        headers:{
+                    "Content-Type": "application/json",
+                },
                         body:JSON.stringify(cart)
                     })
                 }
@@ -105,7 +109,7 @@
                 localStorage.setItem("cartv",JSON.stringify(cart));
 
 
-
+                console.log(cart,"6")
 
             }
         })

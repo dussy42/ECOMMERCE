@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
   
-    path("/add",views.addtocart,name="product"),
+    path("/addtocart",views.addtocart,name="addtocart"),
 
-    path("",views.cart,name="productlist"),
+    path("",views.cart,name="cart"),
 ] 
