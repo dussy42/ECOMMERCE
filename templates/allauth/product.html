@@ -96,17 +96,21 @@
 
                 if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
 
+try{
+    letv =    await  fetch("/cart/addtocart",{
+              method:"post",
+              headers:{
+          "Content-Type": "application/json",
+      },
+              body:JSON.stringify(cart)
+          })
+    
+}catch(e){
+}
+}
 
-              letv =    await  fetch("/cart/addtocart",{
-                        method:"post",
-                        headers:{
-                    "Content-Type": "application/json",
-                },
-                        body:JSON.stringify(cart)
-                    })
-                }
-
-                localStorage.setItem("cartv",JSON.stringify(cart));
+localStorage.setItem("cartv",JSON.stringify(cart));
+alert("Added to cart");
 
 
                 console.log(cart,"6")
