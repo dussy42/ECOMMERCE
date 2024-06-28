@@ -6,6 +6,13 @@
 
 {% block content %}
 {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta name="description" content="Product list">
+    <meta name="keywords" content="view our list of products">
+    <meta name="author" content="dussy">
 {% get_static_prefix as STATIC_URL %}
 <div class="full flex flex-col gap-[20px] p-10 mt-[20px]  items-center">
     <h1 class="font-bold">Product List</h1>
@@ -32,7 +39,7 @@
             <p class="flex gap-2">
                 {% with ''|center:val.ratings as range %}
                 {% for vall in range %}
-                 <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/>
+                 <img  class="w-[20px]" alt="rating" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/>
                  <!-- <img  class="w-[20px]" src="{{ STATIC_URL }}rate/star-svgrepo-com (1).svg"/> -->
 
                 {% endfor %}
@@ -101,7 +108,7 @@
                         for (i=0;i<=val["ratings"];i++){
                             console.log("mdmdmdm")
 
-                          aa+=`  <img  class="w-[20px]" src="static/rate/star-svgrepo-com (1).svg"/>`
+                          aa+=`  <img alt="product"  class="w-[20px]" src="static/rate/star-svgrepo-com (1).svg"/>`
                         }
 
                         return aa
