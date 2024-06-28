@@ -81,15 +81,15 @@
 
 
                 let cart = localStorage.getItem("cartv");
-                console.log(cart,"1")
+              
                 if(cart){
                     cart=JSON.parse(cart)
-                    console.log(cart,"2")
+                 
                 }
                 else{
-                    console.log(cart,"3")
+               
                     cart=[]
-                    console.log(cart,"1")
+                 
                 }
                 
                 let index= cart.findIndex(ee=>ee.id==data.id)
@@ -127,7 +127,7 @@ localStorage.setItem("cartv",JSON.stringify(cart));
 alert("Added to cart");
 
 
-                console.log(cart,"6")
+             
 
             }
         })

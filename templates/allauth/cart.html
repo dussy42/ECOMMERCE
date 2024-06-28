@@ -217,8 +217,12 @@ let plusbtn = document.querySelectorAll(".plusbtn")
         if(cart){
             cart = JSON.parse(cart)
             let index  = cart.findIndex(eee=>eee.id==data.id)
-            cart[index].quantity = totalprice+1
-            localStorage.setItem("cartv",JSON.stringify(cart))
+            console.log(index,cart,data)
+            if(index>=0){
+
+                cart[index].quantity = totalprice+1
+                localStorage.setItem("cartv",JSON.stringify(cart))
+            }
 
 
         }
