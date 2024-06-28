@@ -7,6 +7,8 @@
 {% block content %}
 {% load static %}
 {% get_static_prefix as STATIC_URL %}
+{% block extra_head %}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,6 +17,7 @@
     <meta name="keywords" content="{{item.name}}">
     <meta name="author" content="dussy">
    
+    {% endblock %}
   
 <title>About us</title>
 

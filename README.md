@@ -80,6 +80,14 @@ screen w-350
 
 
 # WIREFRAME<br>
+Home page
+![input](assets/wireframeecom.png) <br>
+
+Product page
+![input](assets/wireframe1ecom.jpg) <br>
+
+Product Review page
+![input](assets/PRODUCTREVIEWPAGE.jpg) <br>
 
 
 
