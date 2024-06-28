@@ -100,8 +100,8 @@ data.forEach(ee=>{
 
         </div>`
 
-        tpricevalue = +tprice.textContent
-        tpricevalue.textContent = tpricevalue+(ee.price * ee.quantity)
+        let tpricevalue = +tprice.textContent
+        tprice.textContent = tpricevalue+(ee.price * ee.quantity)
 
 })
     }
@@ -144,8 +144,8 @@ data.forEach(ee=>{
     
             </div>`
 
-            tpricevalue = +tprice.textContent
-        tpricevalue.textContent = tpricevalue+(ee.price * ee.quantity)
+           let  tpricevalue = +tprice.textContent
+        tprice.textContent = tpricevalue+(ee.price * ee.quantity)
             })
         }
 
@@ -182,8 +182,8 @@ let plusbtn = document.querySelectorAll(".plusbtn")
        
         qty.textContent = totalprice+1
         price.textContent = (totalprice+1) * data.price
-        tpricevalue = +tprice.textContent
-        tpricevalue.textContent = tpricevalue+price
+       let tpricevalue = +tprice.textContent
+        tprice.textContent = tpricevalue+price
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
@@ -237,8 +237,8 @@ let plusbtn = document.querySelectorAll(".plusbtn")
        
         qty.textContent = totalprice-1||1
         price.textContent = (totalprice-1||1) * data.price
-        tpricevalue = +tprice.textContent
-        tpricevalue.textContent = tpricevalue+price
+      let  tpricevalue = +tprice.textContent
+        tprice.textContent = tpricevalue+price
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
