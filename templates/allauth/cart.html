@@ -6,8 +6,8 @@
 
 {% block content %}
 {% load static %}
-<div class="full flex flex-col gap-[20px] p-10 mt-[20px] md:flex-row productcon">
-    <div class="w-[80%]  flex  p-5">
+<div class="full flex flex-col gap-[20px] p-10 mt-[20px]  ">
+    <div class="w-[80%]  flex  p-5 productcon flex-col gap-[20px]">
         <div class="w-full h-fit rounded-md shadow-md p-5 flex justify-between items-center">
             <div>
                 <img class="rounded-md w-[100px] h-[100px]" src="{% static 'anna-pelzer-IGfIGP5ONV0-unsplash.jpg'%}">
@@ -43,11 +43,11 @@
     </div>
     <div >
         <h1 class=" text-[20px]">Cart Total</h1>
-        <h1 class="tprice font-bold my-10 ">285</h1>
+        <h1 class="tprice font-bold my-10 ">0</h1>
         
         
 
-        <button class="addtocart rounded-md py-3 px-7 bg-[blue] text-white">Purchase</button>
+        <button class="addtocart rounded-md py-3 px-7 bg-[blue] text-white ">Purchase</button>
 
     </div>
 
@@ -81,12 +81,12 @@ data.forEach(ee=>{
             </div>
             
             <div class="flex gap-[10px] justify-center items-center">
-                <button>
+                <button class="plusbtn">
 
                     <i class="fa-solid fa-plus"></i>
                 </button>
                 <div class="qty">${ee.quantity}</div>
-                <button>
+                <button class="minusbtn">
 
                     <i class="fa-solid fa-minus"></i>
                 </button>
@@ -99,6 +99,9 @@ data.forEach(ee=>{
             </div>
 
         </div>`
+
+        tpricevalue = +tprice.textContent
+        tpricevalue.textContent = tpricevalue+(ee.price * ee.quantity)
 
 })
     }
@@ -140,6 +143,9 @@ data.forEach(ee=>{
                 </div>
     
             </div>`
+
+            tpricevalue = +tprice.textContent
+        tpricevalue.textContent = tpricevalue+(ee.price * ee.quantity)
             })
         }
 
@@ -176,6 +182,8 @@ let plusbtn = document.querySelectorAll(".plusbtn")
        
         qty.textContent = totalprice+1
         price.textContent = (totalprice+1) * data.price
+        tpricevalue = +tprice.textContent
+        tpricevalue.textContent = tpricevalue+price
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
@@ -229,6 +237,8 @@ let plusbtn = document.querySelectorAll(".plusbtn")
        
         qty.textContent = totalprice-1||1
         price.textContent = (totalprice-1||1) * data.price
+        tpricevalue = +tprice.textContent
+        tpricevalue.textContent = tpricevalue+price
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
@@ -266,20 +276,26 @@ let plusbtn = document.querySelectorAll(".plusbtn")
     })
 
     
-let addtocart = ()=>{
+let addtocart =  async ()=>{
     if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
         let cart = localStorage.getItem("cartv");
         if(cart){
 
-            fetch("/addtocart",{
+          await  fetch("/cart/addtocart",{
                 method:"post",
-                body:cart,
+                body:JSON.stringify(cart),
                 headers:{
                     "Content-Type": "application/json",
                 }
             })
         }
 
+        alert("your order is being processed thank you for choosing chops")
+
+
+}else{
+
+    alert("please login to prchase your item")
 
 }
 }
