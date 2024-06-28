@@ -194,7 +194,34 @@ let addtotimecart =async()=>{
 
 clearTimeout(timeout1)
 timeout1 = setTimeout(async ()=>{
-         await   addtocart()
+    if ( "{{ user.is_authenticated|safe }}".trim() =="True"){
+        let cart = localStorage.getItem("cartv");
+        if(cart){
+
+            try{
+                load.classList.add("remove")
+                await  fetch("/cart/addtocart",{
+                      method:"post",
+                      body:cart,
+                      headers:{
+                          "Content-Type": "application/json",
+                      }
+                  })
+            }
+            catch(e){
+
+           
+            }
+            finally{
+              
+            }
+
+        }
+
+     
+
+
+}
         },2000)
 }
 
@@ -326,7 +353,7 @@ let addtocart =  async ()=>{
                 load.classList.add("remove")
                 await  fetch("/cart/addtocart",{
                       method:"post",
-                      body:JSON.stringify(cart),
+                      body:cart,
                       headers:{
                           "Content-Type": "application/json",
                       }
@@ -345,7 +372,8 @@ let addtocart =  async ()=>{
         alert("your order is being processed thank you for choosing chops")
 
 
-}else{
+}
+else{
 
     alert("please login to prchase your item")
 
