@@ -185,9 +185,18 @@ data.forEach(ee=>{
 
 
 let timeout = null
+let timeout2 = null
+let timeout1 = null
 // let productcon = document.querySelector(".productcon")
 productcon.innerHTML=a
 
+let addtotimecart =async()=>{
+
+clearTimeout(timeout1)
+timeout1 = setTimeout(async ()=>{
+         await   addtocart()
+        },2000)
+}
 
 let plusbtn = document.querySelectorAll(".plusbtn")
     let minusbtn = document.querySelectorAll(".minusbtn")
@@ -196,9 +205,9 @@ let plusbtn = document.querySelectorAll(".plusbtn")
     
     plusbtn.forEach(e=>{
         
+        clearTimeout(timeout1)
         
-        
-        e.addEventListener("click",e=>{
+        e.addEventListener("click",async (e)=>{
             clearTimeout(timeout)
             let parent = e.currentTarget.parentElement.parentElement
             // let price = document.querySelector(".price")
@@ -222,13 +231,14 @@ let plusbtn = document.querySelectorAll(".plusbtn")
 
                 cart[index].quantity = totalprice+1
                 localStorage.setItem("cartv",JSON.stringify(cart))
+                
             }
+
+      
 
 
         }
-        timeout = setTimeout(()=>{
-            // addtocart
-        },2000)
+      
 
         
    
@@ -237,6 +247,7 @@ let plusbtn = document.querySelectorAll(".plusbtn")
     
    
        
+addtotimecart()
 
 
 
@@ -258,7 +269,7 @@ let plusbtn = document.querySelectorAll(".plusbtn")
 
    
     
-    e.addEventListener("click",e=>{
+    e.addEventListener("click",async (e)=>{
         clearTimeout(timeout)
         let parent = e.currentTarget.parentElement.parentElement
         let qty = parent.querySelector(".qty")
@@ -281,9 +292,7 @@ let plusbtn = document.querySelectorAll(".plusbtn")
 
 
         }
-        timeout = setTimeout(()=>{
-            // addtocart
-        },2000)
+       await addtotimecart()
 
         
    
@@ -292,7 +301,6 @@ let plusbtn = document.querySelectorAll(".plusbtn")
     
    
        
-
 
 
 
