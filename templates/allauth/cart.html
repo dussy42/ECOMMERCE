@@ -183,7 +183,7 @@ let plusbtn = document.querySelectorAll(".plusbtn")
         qty.textContent = totalprice+1
         price.textContent = (totalprice+1) * data.price
        let tpricevalue = +tprice.textContent
-        tprice.textContent = tpricevalue + data.price
+        tprice.textContent = tpricevalue + (+data.price)
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
@@ -238,7 +238,7 @@ let plusbtn = document.querySelectorAll(".plusbtn")
         qty.textContent = totalprice-1||1
         price.textContent = (totalprice-1||1) * data.price
       let  tpricevalue = +tprice.textContent
-        tprice.textContent = tpricevalue+data.price
+        tprice.textContent = tpricevalue+ (+data.price)
         let cart = localStorage.getItem("cartv");
         if(cart){
             cart = JSON.parse(cart)
