@@ -50,7 +50,7 @@ LOGIN_REDIRECT_URL="home"
 LOGOUT_REDIRECT_URL="home"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ALLOWED_HOSTS = ["*","https://chops-fee5c95170e3.herokuapp.com/"]
 
